@@ -1,0 +1,42 @@
+services:
+  # Full-stack service: Express API + Vite SPA served from dist/
+  - type: web
+    name: betta-warlords
+    runtime: node
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: node server.prod.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "5000"
+      - key: APP_URL
+        sync: false  # Set manually in Render dashboard
+      - key: DISCORD_CLIENT_ID
+        sync: false
+      - key: DISCORD_CLIENT_SECRET
+        sync: false
+      - key: DISCORD_PUBLIC_KEY
+        sync: false
+      - key: GAME_API_GRUDA
+        sync: false
+      - key: DISCORD_WEBHOOK_URL
+        sync: false
+      - key: DISCORD_WEBHOOK_CHAT
+        sync: false
+      - key: DISCORD_WEBHOOK_URL_ANNOUNCE
+        sync: false
+      - key: DISCORD_GRUDGE_WEBHOOK
+        sync: false
+      - key: CROSSMINT_API_KEY
+        sync: false
+      - key: CROSSMINT_PROJECT_ID
+        sync: false
+      - key: GBUX_MINT_ADDRESS
+        sync: false
+      - key: GBUX_ADMIN_PRIVATE_KEY
+        sync: false

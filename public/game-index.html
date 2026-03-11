@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Betta Warlords — The Sunken Kingdom of Abyssia | Grudge Studios</title>
+  <meta name="description" content="Dive into the Sunken Kingdom of Abyssia. 32 unique Warlord combinations, cNFT breeding, tactical RPG combat, and the gateway to GBuX & Grudge Studios Free AI." />
+  <meta name="theme-color" content="#06b6d4" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Betta Warlords" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/images/logo.png" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+
+  <meta property="og:title" content="Betta Warlords — The Sunken Kingdom of Abyssia" />
+  <meta property="og:description" content="Underwater tactical RPG. 32 Warlord combos. cNFT breeding. GBuX rewards. Play free in browser or install as app." />
+  <meta property="og:image" content="/images/splash_logo.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --deep: #050a18;
+      --abyss: #0a1128;
+      --midnight: #0e1630;
+      --teal: #06b6d4;
+      --cyan: #22d3ee;
+      --purple: #a855f7;
+      --gold: #f59e0b;
+      --red: #ef4444;
+      --green: #22c55e;
+      --pink: #ec4899;
+      --orange: #f97316;
+      --slate: #94a3b8;
+      --text: #e2e8f0;
+      --dim: #94a3b8;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    @media (min-width: 1200px) { html { font-size: 18px; } }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--deep);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, h5 { font-family: 'Cinzel', serif; line-height: 1.2; }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; clip: rect(0,0,0,0); overflow: hidden; }
+
+    .section { padding: 100px 24px; max-width: 1300px; margin: 0 auto; }
+    @media (max-width: 768px) { .section { padding: 60px 16px; } }
+
+    .stitle {
+      text-align: center;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .ssub {
+      text-align: center;
+      color: var(--dim);
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      margin-bottom: 56px;
+      max-width: 750px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 60px 24px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(6,182,212,0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 30%, rgba(168,85,247,0.14) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(239,68,68,0.08) 0%, transparent 40%),
+        linear-gradient(180deg, var(--deep) 0%, var(--abyss) 50%, var(--midnight) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-logo {
+      width: min(600px, 90vw);
+      margin-bottom: 32px;
+      filter: drop-shadow(0 0 60px rgba(6,182,212,0.5));
+      animation: logoFloat 4s ease-in-out infinite;
+    }
+    @keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #22d3ee 0%, #a855f7 40%, #ef4444 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--dim);
+      margin-bottom: 36px;
+      max-width: 750px;
+    }
+    .hero-badges { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+    .badge {
+      padding: 8px 20px; border-radius: 24px;
+      font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      border: 1px solid;
+    }
+    .badge-teal { border-color: var(--teal); color: var(--teal); background: rgba(6,182,212,0.12); }
+    .badge-purple { border-color: var(--purple); color: var(--purple); background: rgba(168,85,247,0.12); }
+    .badge-gold { border-color: var(--gold); color: var(--gold); background: rgba(245,158,11,0.12); }
+    .badge-red { border-color: var(--red); color: var(--red); background: rgba(239,68,68,0.12); }
+
+    .cta-row { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 36px; border-radius: 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem; font-weight: 700;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: all 0.3s; letter-spacing: 1.5px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      color: #fff; box-shadow: 0 6px 24px rgba(6,182,212,0.45);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(6,182,212,0.65); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.05); color: var(--cyan);
+      border: 1px solid rgba(6,182,212,0.4);
+    }
+    .btn-secondary:hover { background: rgba(6,182,212,0.15); transform: translateY(-3px); }
+    .btn-gbux {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #000; box-shadow: 0 6px 24px rgba(245,158,11,0.45);
+    }
+    .btn-gbux:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(245,158,11,0.65); }
+    .btn-install {
+      background: linear-gradient(135deg, var(--green), #059669);
+      color: #fff; box-shadow: 0 6px 24px rgba(34,197,94,0.45);
+    }
+    .btn-install:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(34,197,94,0.65); }
+
+    /* ---- BUBBLES ---- */
+    .bubbles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .bubble {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(34,211,238,0.35), rgba(34,211,238,0.08));
+      border: 1px solid rgba(34,211,238,0.15);
+      animation: rise linear infinite;
+    }
+    @keyframes rise {
+      0% { transform: translateY(100vh) translateX(0) scale(0.3); opacity: 0; }
+      8% { opacity: 1; }
+      50% { transform: translateY(50vh) translateX(var(--wx)) scale(0.7); }
+      92% { opacity: 1; }
+      100% { transform: translateY(-5vh) translateX(calc(var(--wx) * -0.6)) scale(1); opacity: 0; }
+    }
+
+    /* ---- SCROLL ANIMATIONS ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.85); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* ---- VESSELS ---- */
+    .vessels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; }
+    .vessel-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 40px 28px; text-align: center;
+      transition: all 0.4s; position: relative; overflow: hidden;
+      background-size: cover; background-position: center;
+    }
+    .vessel-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(5,10,24,0.82);
+      border-radius: 20px; z-index: 0;
+    }
+    .vessel-card > * { position: relative; z-index: 1; }
+    .vessel-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+    .vessel-card:hover::after { background: rgba(5,10,24,0.72); }
+    .vessel-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; z-index: 2; }
+    .vessel-betta { background-image: url('/map_nodes/thermal_vent.png'); border-color: rgba(239,68,68,0.2); }
+    .vessel-betta::before { background: linear-gradient(90deg, var(--red), var(--orange)); }
+    .vessel-gorgon { background-image: url('/map_nodes/abyssal_trench.png'); border-color: rgba(168,85,247,0.2); }
+    .vessel-gorgon::before { background: linear-gradient(90deg, var(--purple), var(--pink)); }
+    .vessel-plankton { background-image: url('/map_nodes/biolume_caves.png'); border-color: rgba(34,211,238,0.2); }
+    .vessel-plankton::before { background: linear-gradient(90deg, var(--cyan), var(--teal)); }
+    .vessel-card h3 { font-size: 1.4rem; margin-bottom: 12px; }
+    .vessel-betta h3 { color: var(--red); }
+    .vessel-gorgon h3 { color: var(--purple); }
+    .vessel-plankton h3 { color: var(--cyan); }
+    .vessel-card p { font-size: 1rem; color: var(--dim); line-height: 1.7; }
+    .vessel-status {
+      display: inline-block; padding: 6px 16px; border-radius: 14px;
+      font-size: 0.8rem; font-weight: 700; margin-top: 16px;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    /* ---- BREEDS ---- */
+    .breeds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .breed-card {
+      background: rgba(14,22,48,0.7); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 24px; display: flex; gap: 20px;
+      align-items: flex-start; transition: all 0.4s;
+    }
+    .breed-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.18); box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+    .breed-img {
+      width: 80px; height: 80px; border-radius: 14px;
+      image-rendering: pixelated; flex-shrink: 0; border: 2px solid;
+    }
+    .breed-info h4 { font-size: 1.15rem; margin-bottom: 4px; }
+    .breed-info .breed-trait { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .breed-info p { font-size: 0.9rem; color: var(--dim); line-height: 1.5; }
+
+    /* ---- CLASSES ---- */
+    .classes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .class-card {
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px; padding: 36px 28px; text-align: center;
+      transition: all 0.4s; position: relative; overflow: hidden;
+      background-size: cover; background-position: center;
+    }
+    .class-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(5,10,24,0.82);
+      border-radius: 20px; z-index: 0;
+    }
+    .class-card > * { position: relative; z-index: 1; }
+    .class-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.45); }
+    .class-card:hover::after { background: rgba(5,10,24,0.72); }
+    .class-card h4 { font-size: 1.3rem; margin-bottom: 10px; }
+    .class-card p { font-size: 0.95rem; color: var(--dim); }
+
+    /* ---- FULL-WIDTH IMAGE SECTIONS ---- */
+    .fullimg {
+      width: 100%; position: relative; overflow: hidden;
+    }
+    .fullimg img {
+      width: 100%; display: block; max-height: 500px; object-fit: cover;
+    }
+    .fullimg-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(5,10,24,0.92) 0%, rgba(5,10,24,0.4) 40%, rgba(5,10,24,0.4) 60%, rgba(5,10,24,0.92) 100%);
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: 40px;
+    }
+    .fullimg-text h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 16px; color: #fff; }
+    .fullimg-text p { font-size: clamp(1rem, 2vw, 1.3rem); color: var(--dim); max-width: 650px; }
+
+    /* ---- BOSSES ---- */
+    .bosses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 28px; }
+    .boss-card {
+      background: rgba(14,22,48,0.8); border-radius: 20px;
+      padding: 36px 28px; position: relative; overflow: hidden;
+      transition: all 0.4s;
+    }
+    .boss-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .boss-card:nth-child(1)::before { background: var(--teal); }
+    .boss-card:nth-child(2)::before { background: var(--purple); }
+    .boss-card:nth-child(3)::before { background: var(--red); }
+    .boss-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+    .boss-card h4 { font-size: 1.25rem; margin-bottom: 6px; }
+    .boss-card .boss-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px; }
+    .boss-card p { font-size: 0.95rem; color: var(--dim); margin-bottom: 14px; line-height: 1.6; }
+    .boss-card .boss-lore {
+      font-style: italic; font-size: 0.9rem;
+      padding: 14px 18px; border-left: 3px solid;
+      background: rgba(0,0,0,0.25); border-radius: 0 10px 10px 0;
+    }
+    .boss-card:nth-child(1) .boss-lore { border-color: var(--teal); color: var(--teal); }
+    .boss-card:nth-child(2) .boss-lore { border-color: var(--purple); color: var(--purple); }
+    .boss-card:nth-child(3) .boss-lore { border-color: var(--red); color: var(--red); }
+
+    /* ---- LOCATIONS ---- */
+    .locations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .loc-card {
+      background: rgba(14,22,48,0.6); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px; overflow: hidden; transition: all 0.4s;
+    }
+    .loc-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.15); }
+    .loc-art { width: 100%; height: 150px; object-fit: cover; image-rendering: pixelated; }
+    .loc-body { padding: 18px; }
+    .loc-body h5 { font-size: 1rem; margin-bottom: 6px; }
+    .loc-body .lore-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+    .loc-body .lore-quote { font-size: 0.85rem; font-style: italic; color: var(--dim); line-height: 1.5; }
+    .vessel-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+
+    /* ---- ENEMIES ---- */
+    .enemies-gallery { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    .enemy-thumb {
+      width: 96px; height: 96px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(14,22,48,0.5); padding: 8px;
+      image-rendering: pixelated; object-fit: contain;
+      transition: all 0.4s;
+    }
+    .enemy-thumb:hover { transform: scale(1.2); border-color: var(--teal); box-shadow: 0 0 20px rgba(6,182,212,0.35); }
+
+    /* ---- CARDS ---- */
+    .cards-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .card-frame {
+      width: 160px; border-radius: 10px; overflow: hidden;
+      transition: all 0.4s; border: 1px solid rgba(255,255,255,0.06);
+    }
+    .card-frame:hover { transform: translateY(-8px) scale(1.06); box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+    .card-frame img { width: 100%; display: block; image-rendering: pixelated; }
+
+    .boss-cards-row { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+    .boss-card {
+      width: 220px; border-radius: 12px; overflow: hidden;
+      transition: all 0.4s; position: relative;
+      border: 2px solid rgba(255,215,0,0.15);
+      background: rgba(0,0,0,0.4);
+    }
+    .boss-card:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(255,215,0,0.1); border-color: rgba(255,215,0,0.3); }
+    .boss-card .boss-img-wrap {
+      width: 100%; aspect-ratio: 1 / 1; overflow: hidden; position: relative;
+    }
+    .boss-card .boss-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .boss-card .boss-img-wrap::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    }
+    .boss-card .boss-info {
+      padding: 12px 14px 16px; text-align: center;
+    }
+    .boss-card .boss-name {
+      font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700;
+      margin-bottom: 4px; letter-spacing: 0.05em;
+    }
+    .boss-card .boss-vessel {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 6px; opacity: 0.8;
+    }
+    .boss-card .boss-lore {
+      font-size: 0.75rem; color: rgba(200,200,220,0.7); line-height: 1.4; font-style: italic;
+    }
+    .boss-card.vessel-red .boss-name { color: #ef4444; }
+    .boss-card.vessel-red .boss-vessel { color: #f87171; }
+    .boss-card.vessel-red { border-color: rgba(239,68,68,0.2); }
+    .boss-card.vessel-red:hover { border-color: rgba(239,68,68,0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(239,68,68,0.15); }
+    .boss-card.vessel-blue .boss-name { color: #60a5fa; }
+    .boss-card.vessel-blue .boss-vessel { color: #93c5fd; }
+    .boss-card.vessel-blue { border-color: rgba(96,165,250,0.2); }
+    .boss-card.vessel-blue:hover { border-color: rgba(96,165,250,0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(96,165,250,0.15); }
+    .boss-card.vessel-green .boss-name { color: #4ade80; }
+    .boss-card.vessel-green .boss-vessel { color: #86efac; }
+    .boss-card.vessel-green { border-color: rgba(74,222,128,0.2); }
+    .boss-card.vessel-green:hover { border-color: rgba(74,222,128,0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(74,222,128,0.15); }
+    .boss-card.vessel-all .boss-name { color: #ffd700; }
+    .boss-card.vessel-all .boss-vessel { color: #fbbf24; }
+    .boss-card.vessel-all { border-color: rgba(255,215,0,0.2); }
+    .boss-card.vessel-all:hover { border-color: rgba(255,215,0,0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(255,215,0,0.15); }
+
+    /* ---- BUILDINGS ---- */
+    .buildings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 14px; }
+    .bldg-tile {
+      background: rgba(14,22,48,0.5); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px; padding: 12px; text-align: center;
+      transition: all 0.3s;
+    }
+    .bldg-tile:hover { border-color: var(--teal); transform: translateY(-3px); }
+    .bldg-tile img { width: 72px; height: 72px; image-rendering: pixelated; margin-bottom: 8px; }
+    .bldg-tile span { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--dim); }
+
+    /* ---- FEATURE BANNERS ---- */
+    .banner { position: relative; padding: 100px 24px; overflow: hidden; }
+    @media (max-width: 768px) { .banner { padding: 60px 16px; } }
+    .banner::before { content: ''; position: absolute; inset: 0; }
+    .b-cnft::before { background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(6,182,212,0.1)); }
+    .b-grudge::before { background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(245,158,11,0.1)); }
+    .b-gbux::before { background: linear-gradient(135deg, rgba(245,158,11,0.14), rgba(34,211,238,0.08)); }
+    .banner-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; }
+    .banner-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    @media (max-width: 768px) { .banner-split { grid-template-columns: 1fr; } }
+    .banner-visual { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .banner-visual img { width: 100%; border-radius: 10px; image-rendering: pixelated; border: 1px solid rgba(255,255,255,0.08); transition: transform 0.3s; }
+    .banner-visual img:hover { transform: scale(1.08); }
+    .banner-text h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 20px; }
+    .banner-text p { color: var(--dim); font-size: clamp(1rem, 1.6vw, 1.15rem); margin-bottom: 18px; line-height: 1.8; }
+
+    .feat-list { list-style: none; margin-bottom: 28px; }
+    .feat-list li { padding: 10px 0; font-size: 1.05rem; display: flex; gap: 12px; align-items: flex-start; }
+    .feat-list li::before { content: '›'; font-family: 'Cinzel', serif; font-weight: 900; font-size: 1.2rem; flex-shrink: 0; }
+    .cnft-list li::before { color: var(--purple); }
+    .grudge-list li::before { color: var(--red); }
+    .gbux-list li::before { color: var(--gold); }
+
+    /* ---- PWA INSTALL BANNER ---- */
+    .pwa-banner {
+      background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(6,182,212,0.12));
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+      max-width: 900px; margin: 0 auto;
+    }
+    .pwa-banner-icon { font-size: 3rem; flex-shrink: 0; }
+    .pwa-banner-text h3 { font-size: 1.3rem; color: var(--green); margin-bottom: 6px; }
+    .pwa-banner-text p { color: var(--dim); font-size: 0.95rem; }
+    .pwa-platforms { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .pwa-plat {
+      padding: 4px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 600;
+      background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ---- ECOSYSTEM ---- */
+    .eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+    .eco-card {
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 28px 24px; text-align: center;
+      transition: all 0.4s; position: relative; overflow: hidden;
+      background-size: cover; background-position: center;
+    }
+    .eco-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(5,10,24,0.85);
+      border-radius: 16px; z-index: 0;
+    }
+    .eco-card > * { position: relative; z-index: 1; }
+    .eco-card:hover { transform: translateY(-4px); border-color: rgba(245,158,11,0.3); }
+    .eco-card:hover::after { background: rgba(5,10,24,0.75); }
+    .eco-card h4 { font-size: 1.05rem; margin-bottom: 10px; color: var(--gold); }
+    .eco-card p { font-size: 0.9rem; color: var(--dim); line-height: 1.6; }
+
+    /* ---- PROLOGUE ---- */
+    .prologue-box {
+      max-width: 900px; margin: 0 auto;
+      background: rgba(14,22,48,0.6); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px; padding: 48px 40px;
+      position: relative; overflow: hidden;
+    }
+    @media (max-width: 600px) { .prologue-box { padding: 32px 20px; } }
+    .prologue-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--red), var(--purple), var(--cyan)); }
+    .prologue-box p { font-size: clamp(1rem, 1.8vw, 1.15rem); line-height: 1.9; color: var(--dim); margin-bottom: 20px; }
+    .prologue-box p:last-child { margin-bottom: 0; }
+    .prologue-box p:first-of-type::first-letter { font-family: 'Cinzel', serif; font-size: 3.5rem; float: left; margin-right: 10px; line-height: 1; color: var(--cyan); }
+
+    /* ---- WEB STRIP ---- */
+    .web-strip {
+      display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+      padding: 14px 20px;
+      font-size: 0.9rem; font-weight: 600; letter-spacing: 1px;
+    }
+    .web-strip span { padding: 6px 16px; border-radius: 8px; }
+    .web2 { background: rgba(34,211,238,0.12); color: var(--cyan); border: 1px solid rgba(34,211,238,0.3); }
+    .web3 { background: rgba(168,85,247,0.12); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+    .pwa-tag { background: rgba(34,197,94,0.12); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+    .free-tag { background: rgba(245,158,11,0.12); color: var(--gold); border: 1px solid rgba(245,158,11,0.3); }
+
+    /* ---- EXCLUSIVE ---- */
+    .exclusive-strip {
+      background: linear-gradient(90deg, var(--gold), var(--orange), var(--gold));
+      color: #000; text-align: center;
+      padding: 14px 20px;
+      font-family: 'Cinzel', serif; font-weight: 700;
+      font-size: clamp(0.8rem, 2vw, 1.1rem);
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+
+    /* ---- NAV ---- */
+    .topnav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(5,10,24,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .topnav img { height: 36px; filter: drop-shadow(0 0 8px rgba(6,182,212,0.3)); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--dim); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cyan); }
+    @media (max-width: 700px) { .nav-links { display: none; } }
+
+    /* ---- DIVIDER ---- */
+    .divider { height: 1px; max-width: 700px; margin: 0 auto; background: linear-gradient(90deg, transparent, rgba(6,182,212,0.3), transparent); }
+
+    /* ---- FOOTER ---- */
+    .footer { text-align: center; padding: 80px 24px 48px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-logo { width: 140px; margin-bottom: 20px; filter: drop-shadow(0 0 16px rgba(6,182,212,0.3)); }
+    .footer p { color: var(--dim); font-size: 0.9rem; margin-bottom: 10px; }
+    .footer-links { display: flex; gap: 28px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--teal); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cyan); }
+
+    /* ---- MYSTERY ---- */
+    .mystery-item {
+      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-style: italic; font-size: 1rem; line-height: 1.6;
+    }
+    .mystery-item:last-child { border-bottom: none; }
+
+    /* ---- ATTRIBUTES ---- */
+    .attr-row { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; }
+    .attr-tile {
+      width: 110px; background: rgba(14,22,48,0.5); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px; padding: 12px; text-align: center;
+      transition: all 0.3s;
+    }
+    .attr-tile:hover { border-color: var(--teal); transform: translateY(-3px); }
+    .attr-tile img { width: 64px; height: 64px; image-rendering: pixelated; margin-bottom: 8px; }
+    .attr-tile span { display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--dim); }
+  </style>
+</head>
+
+<body>
+
+<div class="bubbles" id="bubbles" aria-hidden="true"></div>
+
+<nav class="topnav" role="navigation" aria-label="Main navigation">
+  <a href="/"><img src="/images/logo.png" alt="Betta Warlords" /></a>
+  <ul class="nav-links">
+    <li><a href="#lore">Lore</a></li>
+    <li><a href="#breeds">Breeds</a></li>
+    <li><a href="#world">World</a></li>
+    <li><a href="#cnft">cNFT</a></li>
+    <li><a href="#grudge">Grudge</a></li>
+    <li><a href="#gbux">GBuX</a></li>
+    <li><a href="#install">Install</a></li>
+  </ul>
+</nav>
+
+<div class="exclusive-strip" style="margin-top: 60px;">
+  Your Exclusive Gateway to GBuX, cNFT Breeding & Grudge Studios Free AI
+</div>
+
+<div class="web-strip">
+  <span class="web2">Web2 — Play Free in Browser</span>
+  <span class="web3">Web3 — cNFT On-Chain</span>
+  <span class="pwa-tag">PWA — Install as App</span>
+  <span class="free-tag">Free AI Powered</span>
+</div>
+
+<header class="hero" role="banner">
+  <div class="hero-content">
+    <img src="/images/splash_logo.png" alt="Betta Warlords — The Sunken Kingdom of Abyssia" class="hero-logo" width="600" height="600" />
+    <h1>BETTA WARLORDS</h1>
+    <p class="hero-tagline">The Sunken Kingdom of Abyssia awaits. 8 Betta breeds. 4 classes. 32 unique Warlords. Tactical RPG combat in a vast underwater world — and your gateway to cNFT breeding, GBuX rewards, and Grudge Studios Free AI.</p>
+    <div class="hero-badges">
+      <span class="badge badge-teal">Turn-Based RPG</span>
+      <span class="badge badge-purple">cNFT Breeding</span>
+      <span class="badge badge-gold">GBuX Rewards</span>
+      <span class="badge badge-red">Grudge Gameplay</span>
+    </div>
+    <div class="cta-row">
+      <a href="/" class="btn btn-primary">Dive In — Play Now</a>
+      <a href="#cnft" class="btn btn-secondary">cNFT Breeding</a>
+      <a href="#gbux" class="btn btn-gbux">Earn GBuX</a>
+      <button class="btn btn-install" id="installBtn" style="display:none;" onclick="installPWA()">Install App</button>
+    </div>
+  </div>
+</header>
+
+<!-- ======== FULL-WIDTH BATTLE IMAGE ======== -->
+<div class="fullimg reveal-scale">
+  <img src="/backgrounds/ocean_battle_new.png" alt="Freshwater Battle Scene" loading="lazy" />
+  <div class="fullimg-overlay">
+    <div class="fullimg-text">
+      <h2>Tactical Combat in Living Waters</h2>
+      <p>4-row positioning, speed-based initiative, Guardian intercepts, transformation skills, and multi-unit party battles</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======== LORE / PROLOGUE ======== -->
+<section class="section" id="lore">
+  <h2 class="stitle reveal">The Silence of the Plankton</h2>
+  <p class="ssub reveal">Three Vessels of Magic once sustained all life beneath the waves. Then the Light of Unity went silent...</p>
+  <div class="prologue-box reveal">
+    <p>In the age before memory, when the waters were young and currents still sang, three vessels of magic sustained all life beneath the waves. The Betta — fierce, beautiful, and proud — carried the Fire of Will, the spark that drives all creatures to fight, to love, to endure. The Gorgons — ancient serpents of root and stone — held the Weight of Law, the force that keeps the deep in order and the currents in rhythm. And the Plankton — countless, invisible, everywhere — bore the Light of Unity, the quiet magic that binds every living thing to every other.</p>
+    <p>For eons, the three magics held the waters in balance. The Betta Warlords built the kingdom of Abyssia atop the Root Crown, a living root throne that channeled all three magics into harmony.</p>
+    <p>Then the Plankton Magic went silent. No warning, no cataclysm, no final cry. One day the water simply... dimmed. The Root Crown shattered. The Gorgon Sirens, driven mad by the severed connection, turned hostile. The Betta Warlords, the last vessels of conscious magic, found themselves alone in darkening waters.</p>
+    <p style="color: var(--cyan); font-weight: 500;">Now you must gather your Warlords, restore the Root Crown, face the maddened Gorgons, and discover why the Plankton Magic fell silent — before the Abyss devours everything.</p>
+  </div>
+</section>
+
+<!-- ======== THREE VESSELS ======== -->
+<section class="section">
+  <h2 class="stitle reveal">The Three Vessels of Magic</h2>
+  <p class="ssub reveal">The water's power flows through three ancient channels — Fire, Law, and Unity</p>
+  <div class="vessels-grid">
+    <div class="vessel-card vessel-betta reveal-left">
+      <h3>The Betta — Fire of Will</h3>
+      <p>The Betta fish carry the oldest conscious magic in the waters. Each of the eight breeds channels a different aspect of Will — from the Halfmoon's protective resolve to the Crowntail's fierce ambition. When a Betta Warlord fights, they burn with the accumulated determination of every ancestor who refused to yield.</p>
+      <span class="vessel-status" style="background: rgba(239,68,68,0.15); color: var(--red);">Active — You are the last hope</span>
+    </div>
+    <div class="vessel-card vessel-gorgon reveal">
+      <h3>The Gorgons — Weight of Law</h3>
+      <p>Three Gorgon Sirens once maintained the natural order of the deep: Scylla, Medusa, and Charybdis. Their petrifying gaze was justice — turning only those who threatened the balance to stone. But when the Plankton Magic severed their connection, the Gorgons lost their ability to distinguish friend from foe.</p>
+      <span class="vessel-status" style="background: rgba(168,85,247,0.15); color: var(--purple);">Corrupted — Must be defeated or restored</span>
+    </div>
+    <div class="vessel-card vessel-plankton reveal-right">
+      <h3>The Plankton — Light of Unity</h3>
+      <p>The most mysterious and powerful of the three magics. Plankton are everywhere — a living network of bioluminescent light that let every creature feel the heartbeat of every other. When their magic went silent, the waters themselves went blind and deaf. Why they withdrew is the central mystery.</p>
+      <span class="vessel-status" style="background: rgba(34,211,238,0.15); color: var(--cyan);">Silent — The great mystery</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== FULL-WIDTH KELP IMAGE ======== -->
+<div class="fullimg reveal-scale">
+  <img src="/backgrounds/kelp_battle.png" alt="Kelp Forest Battle" loading="lazy" />
+  <div class="fullimg-overlay">
+    <div class="fullimg-text">
+      <h2>Explore a Vast Underwater World</h2>
+      <p>32 locations across root groves, kelp forests, volcanic vents, frozen depths, and the darkest abyss</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======== BREEDS ======== -->
+<section class="section" id="breeds">
+  <h2 class="stitle reveal">8 Betta Breeds</h2>
+  <p class="ssub reveal">Inspired by real IBC show standards. Each breed channels a unique aspect of the Fire of Will.</p>
+  <div class="breeds-grid">
+    <div class="breed-card reveal">
+      <img src="/images/races/blue_betta.png" alt="Halfmoon" class="breed-img" style="border-color: #22d3ee;" loading="lazy" />
+      <div class="breed-info">
+        <h4 style="color: #22d3ee;">Halfmoon</h4>
+        <div class="breed-trait" style="color: #22d3ee;">Current Flow — +1 All Stats</div>
+        <p>Balanced perfection — a 180-degree caudal spread with full ray branching and flawless symmetry.</p>
+      </div>
+    </div>
+    <div class="breed-card reveal">
+      <img src="/images/races/red_betta.png" alt="Plakat" class="breed-img" style="border-color: #ef4444;" loading="lazy" />
+      <div class="breed-info">
+        <h4 style="color: #ef4444;">Plakat</h4>
+        <div class="breed-trait" style="color: #ef4444;">Blood Frenzy — +4 STR, +2 VIT</div>
+        <p>Short-finned brawlers from the original fighting bloodlines — compact, aggressive, bred for battle.</p>
+      </div>
+    </div>
+    <div class="breed-card reveal">
+      <img src="/images/races/purple_betta.png" alt="Doubletail" class="breed-img" style="border-color: #a855f7;" loading="lazy" />
+      <div class="breed-info">
+        <h4 style="color: #a855f7;">Doubletail</h4>
+        <div class="breed-trait" style="color: #a855f7;">Arcane Depths — +3 INT, +2 DEX</div>
+        <p>Twin-lobed and mystical — a rare recessive breed channeling arcane currents through split caudal fins.</p>
+      </div>
+    </div>
+    <div class="breed-card reveal">
+      <img src="/images/races/white_betta.png" alt="Cambodian" class="breed-img" style="border-color: #94a3b8;" loading="lazy" />
+      <div class="breed-info">
+        <h4 style="color: #94a3b8;">Cambodian</h4>
+        <div class="breed-trait" style="color: #94a3b8;">Phantom Scales — +3 VIT, +2 END</div>
+        <p>Pale and spectral — reduced pigment bettas from the frozen depths, nearly impossible to kill.</p>
+      </div>
+    </div>
+    <div class="breed-card reveal">
+      <img src="/images/races/green_betta.png" alt="Giant" class="breed-img" style="border-color: #22c55e;" loading="lazy" />
+      <div class="breed-info">
+        <h4 style="color: #22c55e;">Giant</h4>
+        <div class="breed-trait" style="color: #22c55e;">River Fury — +3 STR, +2 AGI</div>
+        <p>Oversized river predators — the enlarged chr8 locus lineage with devastating raw power.</p>
+      </div>
+    </div>
+    <div class="breed-card reveal">
+      <img src="/images/races/gold_betta.png" alt="Crowntail" class="breed-img" style="border-color: #f59e0b;" loading="lazy" />
+      <div class="breed-info">
+        <h4 style="color: #f59e0b;">Crowntail</h4>
+        <div class="breed-trait" style="color: #f59e0b;">Royal Guard — +3 END, +2 VIT</div>
+        <p>Royal defenders — extended ray tips form a crown of spines, armoring them in living gold.</p>
+      </div>
+    </div>
+    <div class="breed-card reveal">
+      <img src="/images/races/orange_betta.png" alt="Dragonscale" class="breed-img" style="border-color: #f97316;" loading="lazy" />
+      <div class="breed-info">
+        <h4 style="color: #f97316;">Dragonscale</h4>
+        <div class="breed-trait" style="color: #f97316;">Thermal Dash — +3 AGI, +2 STR</div>
+        <p>Armored speedsters — thick metallic iridescent scales over a blazing orange body.</p>
+      </div>
+    </div>
+    <div class="breed-card reveal">
+      <img src="/images/races/pink_betta.png" alt="Butterfly" class="breed-img" style="border-color: #ec4899;" loading="lazy" />
+      <div class="breed-info">
+        <h4 style="color: #ec4899;">Butterfly</h4>
+        <div class="breed-trait" style="color: #ec4899;">Healing Current — +3 WIS, +2 INT</div>
+        <p>Graceful healers — distinctive banded fin patterns that pulse with restorative energy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== CLASSES ======== -->
+<section class="section">
+  <h2 class="stitle reveal">4 Warlord Classes</h2>
+  <p class="ssub reveal">8 breeds &times; 4 classes = 32 unique Warlord combinations, each with deep skill trees</p>
+  <div class="classes-grid">
+    <div class="class-card reveal" style="background-image: url('/map_nodes/leviathan_lair.png'); border-color: rgba(239,68,68,0.2);">
+      <h4 style="color: var(--red);">Bruiser</h4>
+      <p>Frontline fighter from the crushing depths. Specializes in raw power, deep-water defense, and the devastating Leviathan Form transformation.</p>
+    </div>
+    <div class="class-card reveal" style="background-image: url('/map_nodes/crystal_grotto.png'); border-color: rgba(139,92,246,0.2);">
+      <h4 style="color: #8b5cf6;">Mystic</h4>
+      <p>Master of current magic and root healing arts. Wields Hydrothermal Blasts, Frozen Currents, and the sacred Bubble Shield barrier.</p>
+    </div>
+    <div class="class-card reveal" style="background-image: url('/map_nodes/kelp_forest.png'); border-color: rgba(217,119,6,0.2);">
+      <h4 style="color: #d97706;">Vesselist</h4>
+      <p>Shapeshifter who transforms into a devastating lake predator. Shark Form unleashes Savage Bite, Torpedo Rush, and Predator's Roar.</p>
+    </div>
+    <div class="class-card reveal" style="background-image: url('/map_nodes/anemone_garden.png'); border-color: rgba(34,197,94,0.2);">
+      <h4 style="color: var(--green);">Scraper</h4>
+      <p>Silent hunter from the kelp canopy. Precision strikes with Root Spine Barrage, Depth Charge traps, and deadly Venom Shot.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== FULL-WIDTH VOLCANIC IMAGE ======== -->
+<div class="fullimg reveal-scale">
+  <img src="/backgrounds/volcanic_battle.png" alt="Volcanic Battle" loading="lazy" />
+  <div class="fullimg-overlay">
+    <div class="fullimg-text">
+      <h2>From Burning Vents to Frozen Depths</h2>
+      <p>Each battlefield tells a story — unique terrain, environmental hazards, and atmosphere that shapes every encounter</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======== GORGON BOSSES ======== -->
+<section class="section">
+  <h2 class="stitle reveal">The Gorgon Sirens</h2>
+  <p class="ssub reveal">Three corrupted guardians stand between you and the truth of the Silence</p>
+  <div class="bosses-grid">
+    <div class="boss-card reveal-left">
+      <h4 style="color: var(--teal);">Scylla, Siren of the Shallows</h4>
+      <div class="boss-title" style="color: var(--teal);">Guardian of the Sunlit Waters — Level 9</div>
+      <p>Once the gentlest of the three, Scylla watched over the root groves where young aquatic creatures took their first breaths. Now maddened, her six serpentine heads strike with the speed of rapids.</p>
+      <div class="boss-lore">"Scylla's petrification was always temporary — she would release her victims after they learned respect for the grove. This mercy is now gone."</div>
+    </div>
+    <div class="boss-card reveal">
+      <h4 style="color: var(--purple);">Medusa, Siren of the Mid-Waters</h4>
+      <div class="boss-title" style="color: var(--purple);">Keeper of the Twilight Depths — Level 17</div>
+      <p>Medusa maintained the delicate border between light and darkness. Her serpent hair could sense disturbances from miles away. With the Plankton Magic gone, she lashes out at shadows.</p>
+      <div class="boss-lore">"Legend says Medusa wept when the Plankton Magic fell silent, and her tears became the first abyssal pearls — worth a fortune but cursed with sorrow."</div>
+    </div>
+    <div class="boss-card reveal-right">
+      <h4 style="color: var(--red);">Charybdis, Siren of the Abyss</h4>
+      <div class="boss-title" style="color: var(--red);">The Devourer of the Deep — Level 20</div>
+      <p>The most fearsome of the three. She could create whirlpools that swallowed armies, and her gaze didn't just petrify — it unmade, dissolving matter back into raw water.</p>
+      <div class="boss-lore">"Charybdis is the only being who was present at the moment the Plankton Magic went silent. What she saw in that instant drove her to the edge of madness."</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== WORLD MAP ======== -->
+<section class="section" id="world">
+  <h2 class="stitle reveal">The World of Abyssia</h2>
+  <p class="ssub reveal">32 explorable locations across 5 freshwater terrain regions, each with unique lore tied to the Three Vessels</p>
+  <div class="locations-grid">
+    <div class="loc-card reveal"><img src="/map_nodes/coral_shallows.png" alt="Root Shallows" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--red);"></span>Root Shallows</h5><span class="lore-tag" style="color: var(--red);">Birthplace of the Warlords</span><p class="lore-quote">"Where the first Betta drew breath, the Crown's light still lingers."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/kelp_forest.png" alt="Kelp Forest" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--cyan);"></span>Kelp Forest</h5><span class="lore-tag" style="color: var(--cyan);">The Whispering Canopy</span><p class="lore-quote">"The kelp remembers when the Plankton sang through every frond."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/anemone_garden.png" alt="Anemone Garden" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--cyan);"></span>Anemone Garden</h5><span class="lore-tag" style="color: var(--cyan);">Garden of the First Spells</span><p class="lore-quote">"Ancient magic pulses here — older than the Crown itself."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/biolume_caves.png" alt="Biolume Caves" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--cyan);"></span>Biolume Caves</h5><span class="lore-tag" style="color: var(--cyan);">Echoes of the Lost Light</span><p class="lore-quote">"Even in silence, the caves glow with the memory of unity."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/sargasso_maze.png" alt="Sargasso Maze" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--purple);"></span>Sargasso Maze</h5><span class="lore-tag" style="color: var(--purple);">Labyrinth of the Fallen</span><p class="lore-quote">"The drowned drift here, caught between the living and the void."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/ancient_ruins.png" alt="Sunken Citadel" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--red);"></span>Sunken Citadel</h5><span class="lore-tag" style="color: var(--red);">Ruins of the Old Kingdom</span><p class="lore-quote">"Once the jewel of Abyssia, now a tomb for forgotten kings."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/crystal_grotto.png" alt="Crystal Grotto" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--red);"></span>Crystal Grotto</h5><span class="lore-tag" style="color: var(--red);">The Singing Crystals</span><p class="lore-quote">"The crystals hum with Crown resonance — a fragment is near."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/tide_stream.png" alt="Current Stream" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--red);"></span>Current Stream</h5><span class="lore-tag" style="color: var(--red);">The Razor Current</span><p class="lore-quote">"Powerful currents sweep the unwary into ambushes and glory alike."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/sunken_wreck.png" alt="Shipwreck Hollow" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--purple);"></span>Shipwreck Hollow</h5><span class="lore-tag" style="color: var(--purple);">Lair of the First Siren</span><p class="lore-quote">"Scylla's shadow falls across these timbers."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/thermal_vent.png" alt="Thermal Vent" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--red);"></span>Thermal Vent</h5><span class="lore-tag" style="color: var(--red);">The Burning Forge</span><p class="lore-quote">"In scalding fury, the Warlord forges instruments of destruction."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/frozen_depths.png" alt="Frozen Depths" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--cyan);"></span>Frozen Depths</h5><span class="lore-tag" style="color: var(--cyan);">The Ancient Cold</span><p class="lore-quote">"This cold predates the Crown. Something older sleeps beneath the ice."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/leviathan_lair.png" alt="Leviathan's Wake" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--purple);"></span>Leviathan's Wake</h5><span class="lore-tag" style="color: var(--purple);">Path of the Titans</span><p class="lore-quote">"Where ancient titans passed, the stone still trembles."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/mushroom_forest.png" alt="Mushroom Forest" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--cyan);"></span>Mushroom Forest</h5><span class="lore-tag" style="color: var(--cyan);">The Corrupted Garden</span><p class="lore-quote">"Corruption blooms where the Plankton's light once purified."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/pearl_gate.png" alt="Shadow Citadel" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--purple);"></span>Shadow Citadel</h5><span class="lore-tag" style="color: var(--purple);">Fortress of the Second Siren</span><p class="lore-quote">"Medusa's tears became abyssal pearls. Her rage became this fortress."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/maelstrom.png" alt="Maelstrom Peak" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--red);"></span>Maelstrom Peak</h5><span class="lore-tag" style="color: var(--red);">Eye of the Storm</span><p class="lore-quote">"The vortex masks the approach to the King's inner sanctum."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/abyssal_trench.png" alt="Hadal Trench" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--cyan);"></span>Hadal Trench</h5><span class="lore-tag" style="color: var(--cyan);">Where the Light Hides</span><p class="lore-quote">"In the deepest dark, Plankton still glow. They spell a single word."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/jellyfish_drift.png" alt="Void Threshold" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--cyan);"></span>Void Threshold</h5><span class="lore-tag" style="color: var(--cyan);">Edge of the Known</span><p class="lore-quote">"Where light ends, the Abyss begins. A Sentinel stands watch."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/clam_beds.png" alt="Corrupted Spire" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--red);"></span>Corrupted Spire</h5><span class="lore-tag" style="color: var(--red);">The Final Fragment</span><p class="lore-quote">"The last Crown fragment pulses faintly, calling out for rescue."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/abyssal_throne.png" alt="The Abyss Throne" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--purple);"></span>The Abyss Throne</h5><span class="lore-tag" style="color: var(--purple);">Seat of the Abyss King</span><p class="lore-quote">"In crushing darkness, the King sits upon a throne of devoured light."</p></div></div>
+    <div class="loc-card reveal"><img src="/map_nodes/sandy_wastes.png" alt="Sandy Wastes" class="loc-art" loading="lazy" /><div class="loc-body"><h5><span class="vessel-dot" style="background: var(--red);"></span>Sandy Wastes</h5><span class="lore-tag" style="color: var(--red);">Graveyard of Heroes</span><p class="lore-quote">"The bones of the First Current War lie scattered across the sand."</p></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== CREATURES ======== -->
+<section class="section">
+  <h2 class="stitle reveal">Creatures of the Deep</h2>
+  <p class="ssub reveal">Over 30 unique enemy types inhabit the waters of Abyssia</p>
+  <div class="enemies-gallery reveal">
+    <img src="/images/enemies/armored_crab.png" alt="Armored Crab" class="enemy-thumb" title="Armored Crab" loading="lazy" />
+    <img src="/images/enemies/barracuda.png" alt="Barracuda" class="enemy-thumb" title="Barracuda" loading="lazy" />
+    <img src="/images/enemies/barnacle_warrior.png" alt="Barnacle Warrior" class="enemy-thumb" title="Barnacle Warrior" loading="lazy" />
+    <img src="/images/enemies/jellyfish_eye.png" alt="Jellyfish" class="enemy-thumb" title="Jellyfish" loading="lazy" />
+    <img src="/images/enemies/kelp_giant.png" alt="Kelp Giant" class="enemy-thumb" title="Kelp Giant" loading="lazy" />
+    <img src="/images/enemies/lobster_warlord.png" alt="Lobster Warlord" class="enemy-thumb" title="Lobster Warlord" loading="lazy" />
+    <img src="/images/enemies/mantis_shrimp.png" alt="Mantis Shrimp" class="enemy-thumb" title="Mantis Shrimp" loading="lazy" />
+    <img src="/images/enemies/sea_serpent.png" alt="Sea Serpent" class="enemy-thumb" title="Sea Serpent" loading="lazy" />
+    <img src="/images/enemies/shadow_eel.png" alt="Shadow Eel" class="enemy-thumb" title="Shadow Eel" loading="lazy" />
+    <img src="/images/enemies/shadow_manta.png" alt="Shadow Manta" class="enemy-thumb" title="Shadow Manta" loading="lazy" />
+    <img src="/images/enemies/swordfish_knight.png" alt="Swordfish Knight" class="enemy-thumb" title="Swordfish Knight" loading="lazy" />
+    <img src="/images/enemies/ink_sorcerer.png" alt="Ink Sorcerer" class="enemy-thumb" title="Ink Sorcerer" loading="lazy" />
+    <img src="/images/enemies/puffer_scout.png" alt="Puffer Scout" class="enemy-thumb" title="Puffer Scout" loading="lazy" />
+    <img src="/images/enemies/water_elemental.png" alt="Water Elemental" class="enemy-thumb" title="Water Elemental" loading="lazy" />
+    <img src="/images/enemies/frost_titan.png" alt="Frost Titan" class="enemy-thumb" title="Frost Titan" loading="lazy" />
+    <img src="/images/enemies/frost_wyrm.png" alt="Frost Wyrm" class="enemy-thumb" title="Frost Wyrm" loading="lazy" />
+    <img src="/images/enemies/kraken_lich.png" alt="Kraken Lich" class="enemy-thumb" title="Kraken Lich" loading="lazy" />
+    <img src="/images/enemies/leviathan.png" alt="Leviathan" class="enemy-thumb" title="Leviathan" loading="lazy" />
+    <img src="/images/enemies/nature_elemental.png" alt="Nature Elemental" class="enemy-thumb" title="Nature Elemental" loading="lazy" />
+    <img src="/images/enemies/ocean_mimic.png" alt="Ocean Mimic" class="enemy-thumb" title="Ocean Mimic" loading="lazy" />
+    <img src="/images/enemies/poseidon.png" alt="Poseidon" class="enemy-thumb" title="Poseidon" loading="lazy" />
+    <img src="/images/enemies/stone_guardian.png" alt="Stone Guardian" class="enemy-thumb" title="Stone Guardian" loading="lazy" />
+    <img src="/images/enemies/void_sentinel.png" alt="Void Sentinel" class="enemy-thumb" title="Void Sentinel" loading="lazy" />
+    <img src="/images/enemies/water_priestess.png" alt="Water Priestess" class="enemy-thumb" title="Water Priestess" loading="lazy" />
+    <img src="/images/enemies/abyss_king.png" alt="Abyss King" class="enemy-thumb" title="Abyss King" loading="lazy" />
+    <img src="/images/enemies/demon_lord.png" alt="Demon Lord" class="enemy-thumb" title="Demon Lord" loading="lazy" />
+    <img src="/images/enemies/grand_shaman.png" alt="Grand Shaman" class="enemy-thumb" title="Grand Shaman" loading="lazy" />
+    <img src="/images/enemies/charybdis.png" alt="Charybdis" class="enemy-thumb" title="Charybdis" loading="lazy" />
+    <img src="/images/enemies/sea_devil.png" alt="Sea Devil" class="enemy-thumb" title="Sea Devil" loading="lazy" />
+    <img src="/images/enemies/sea_mushroom.png" alt="Sea Mushroom" class="enemy-thumb" title="Sea Mushroom" loading="lazy" />
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== FULL-WIDTH ABYSS IMAGE ======== -->
+<div class="fullimg reveal-scale">
+  <img src="/backgrounds/abyss_throne_battle.png" alt="Abyss Throne" loading="lazy" />
+  <div class="fullimg-overlay">
+    <div class="fullimg-text">
+      <h2>Descend Into the Abyss</h2>
+      <p>Face the Abyss King, confront the Cacodaemon, and discover the truth behind the Silence</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======== BUILDINGS ======== -->
+<section class="section">
+  <h2 class="stitle reveal">Kingdom Structures</h2>
+  <p class="ssub reveal">Build, upgrade, and manage your underwater stronghold</p>
+  <div class="buildings-grid reveal">
+    <div class="bldg-tile"><img src="/images/buildings/campfire.png" alt="Camp" loading="lazy" /><span>Camp</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/weapons_shop.png" alt="Weapons" loading="lazy" /><span>Weapons</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/armor_shop.png" alt="Armor" loading="lazy" /><span>Armor</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/potions_shop.png" alt="Potions" loading="lazy" /><span>Potions</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/relics_shop.png" alt="Relics" loading="lazy" /><span>Relics</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/healing_shrine.png" alt="Shrine" loading="lazy" /><span>Shrine</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/crystal_cave.png" alt="Crystal Cave" loading="lazy" /><span>Crystal Cave</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/crystal_grotto.png" alt="Grotto" loading="lazy" /><span>Grotto</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/pearl_beds.png" alt="Pearl Beds" loading="lazy" /><span>Pearl Beds</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/coral_grove.png" alt="Coral Grove" loading="lazy" /><span>Coral Grove</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/algae_garden.png" alt="Algae" loading="lazy" /><span>Algae</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/ore_vein.png" alt="Ore Vein" loading="lazy" /><span>Ore Vein</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/shell_deposit.png" alt="Shells" loading="lazy" /><span>Shells</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/boss_lair.png" alt="Boss Lair" loading="lazy" /><span>Boss Lair</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/dungeon_gate.png" alt="Dungeon" loading="lazy" /><span>Dungeon</span></div>
+    <div class="bldg-tile"><img src="/images/buildings/treasure_chest.png" alt="Treasure" loading="lazy" /><span>Treasure</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== TCG CARDS ======== -->
+<section class="section">
+  <h2 class="stitle reveal">The Three Gorgon Sirens</h2>
+  <p class="ssub reveal">When the Plankton Magic went silent, the Root Crown shattered — driving the three Gorgon Sirens mad with power</p>
+
+  <div class="boss-cards-row reveal">
+    <div class="boss-card vessel-red">
+      <div class="boss-img-wrap"><img src="/images/bosses/gorgon_siren_1_medusa.png" alt="Medusa, the First Siren" loading="lazy" /></div>
+      <div class="boss-info">
+        <div class="boss-name">Medusa</div>
+        <div class="boss-vessel">Gorgon Vessel &middot; Fire of Wrath</div>
+        <div class="boss-lore">"Look upon me and know despair. My gaze turns courage to stone and hope to ash."</div>
+      </div>
+    </div>
+    <div class="boss-card vessel-blue">
+      <div class="boss-img-wrap"><img src="/images/bosses/gorgon_siren_2_charybdis.png" alt="Charybdis, the Devourer" loading="lazy" /></div>
+      <div class="boss-info">
+        <div class="boss-name">Charybdis</div>
+        <div class="boss-vessel">Gorgon Vessel &middot; Weight of the Abyss</div>
+        <div class="boss-lore">"The deep hungers endlessly. I am but its maw — all currents flow to me, and none return."</div>
+      </div>
+    </div>
+    <div class="boss-card vessel-green">
+      <div class="boss-img-wrap"><img src="/images/bosses/gorgon_siren_3_scylla.png" alt="Scylla, the Many-Fanged" loading="lazy" /></div>
+      <div class="boss-info">
+        <div class="boss-name">Scylla</div>
+        <div class="boss-vessel">Gorgon Vessel &middot; Coils of Ruin</div>
+        <div class="boss-lore">"Every root I grasp withers. Every grove I touch crumbles. Nature itself recoils from what I've become."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="boss-cards-row reveal" style="margin-top: 32px;">
+    <div class="boss-card vessel-all" style="width: 380px;">
+      <div class="boss-img-wrap" style="aspect-ratio: 16 / 10;"><img src="/images/bosses/gorgon_sisters_all.png" alt="The Three Gorgon Sirens United" loading="lazy" /></div>
+      <div class="boss-info">
+        <div class="boss-name">The Gorgon Sisters</div>
+        <div class="boss-vessel">United Vessels &middot; The Root Crown Shattered</div>
+        <div class="boss-lore">"Three who were guardians. Three who fell. Three who must be stopped before the freshwater realms drown in silence."</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="ssub reveal" style="margin-top: 36px;">Location cards align to the Three Vessels of Magic</p>
+  <div class="cards-row reveal" style="margin-top: 12px;">
+    <div class="card-frame"><img src="/images/cards/card_v1_blue.png" alt="Betta Vessel I" loading="lazy" /></div>
+    <div class="card-frame"><img src="/images/cards/card_v1_green.png" alt="Plankton Vessel I" loading="lazy" /></div>
+    <div class="card-frame"><img src="/images/cards/card_v1_red.png" alt="Gorgon Vessel I" loading="lazy" /></div>
+    <div class="card-frame"><img src="/images/cards/card_v2_blue.png" alt="Betta Vessel II" loading="lazy" /></div>
+    <div class="card-frame"><img src="/images/cards/card_v2_green.png" alt="Plankton Vessel II" loading="lazy" /></div>
+    <div class="card-frame"><img src="/images/cards/card_v2_red.png" alt="Gorgon Vessel II" loading="lazy" /></div>
+    <div class="card-frame"><img src="/images/cards/card_v3_blue.png" alt="Betta Vessel III" loading="lazy" /></div>
+    <div class="card-frame"><img src="/images/cards/card_v3_green.png" alt="Plankton Vessel III" loading="lazy" /></div>
+    <div class="card-frame"><img src="/images/cards/card_v3_red.png" alt="Gorgon Vessel III" loading="lazy" /></div>
+  </div>
+  <div class="cards-row reveal" style="margin-top: 16px;">
+    <div class="card-frame"><img src="/images/cards/card_back_blue.png" alt="Betta Card Back" loading="lazy" /></div>
+    <div class="card-frame"><img src="/images/cards/card_back_green.png" alt="Plankton Card Back" loading="lazy" /></div>
+    <div class="card-frame"><img src="/images/cards/card_back_red.png" alt="Gorgon Card Back" loading="lazy" /></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== ATTRIBUTES ======== -->
+<section class="section">
+  <h2 class="stitle reveal">8 Core Attributes</h2>
+  <p class="ssub reveal">Every Warlord is defined by 8 attributes that shape their combat role and progression</p>
+  <div class="attr-row reveal">
+    <div class="attr-tile"><img src="/images/attributes/strength.png" alt="Strength" loading="lazy" /><span>Strength</span></div>
+    <div class="attr-tile"><img src="/images/attributes/vitality.png" alt="Vitality" loading="lazy" /><span>Vitality</span></div>
+    <div class="attr-tile"><img src="/images/attributes/endurance.png" alt="Endurance" loading="lazy" /><span>Endurance</span></div>
+    <div class="attr-tile"><img src="/images/attributes/dexterity.png" alt="Dexterity" loading="lazy" /><span>Dexterity</span></div>
+    <div class="attr-tile"><img src="/images/attributes/agility.png" alt="Agility" loading="lazy" /><span>Agility</span></div>
+    <div class="attr-tile"><img src="/images/attributes/intellect.png" alt="Intellect" loading="lazy" /><span>Intellect</span></div>
+    <div class="attr-tile"><img src="/images/attributes/wisdom.png" alt="Wisdom" loading="lazy" /><span>Wisdom</span></div>
+    <div class="attr-tile"><img src="/images/attributes/tactics.png" alt="Tactics" loading="lazy" /><span>Tactics</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== cNFT BREEDING ======== -->
+<section class="banner b-cnft" id="cnft">
+  <div class="banner-inner">
+    <div class="banner-split">
+      <div class="banner-text reveal-left">
+        <h2 style="background: linear-gradient(135deg, var(--purple), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">cNFT Breeding</h2>
+        <p>Your Betta Warlords aren't just game characters — they're compressed NFTs on-chain. Breed your 8 unique betta species across 4 classes to create rare genetic combinations. Each cNFT carries its breed traits, class abilities, skill tree progress, and battle history permanently on-chain.</p>
+        <p>The 32 base Warlord combinations are just the beginning. Breeding unlocks hybrid traits, rare color morphs, and legendary genetic mutations that can't be obtained any other way.</p>
+        <ul class="feat-list cnft-list">
+          <li>8 betta breeds &times; 4 classes = 32 base cNFT types with unique on-chain genetics</li>
+          <li>Breed combinations unlock hybrid traits and rare mutations</li>
+          <li>Battle history, skill trees, and equipment permanently recorded</li>
+          <li>Trade, sell, or breed your Warlords on the marketplace</li>
+          <li>Legendary morphs only obtainable through multi-generational breeding</li>
+        </ul>
+        <a href="/" class="btn btn-primary">Start Breeding</a>
+      </div>
+      <div class="banner-visual reveal-right">
+        <img src="/images/races/blue_betta.png" alt="Halfmoon" loading="lazy" />
+        <img src="/images/races/red_betta.png" alt="Plakat" loading="lazy" />
+        <img src="/images/races/purple_betta.png" alt="Doubletail" loading="lazy" />
+        <img src="/images/races/gold_betta.png" alt="Crowntail" loading="lazy" />
+        <img src="/images/races/green_betta.png" alt="Giant" loading="lazy" />
+        <img src="/images/races/orange_betta.png" alt="Dragonscale" loading="lazy" />
+        <img src="/images/races/pink_betta.png" alt="Butterfly" loading="lazy" />
+        <img src="/images/races/white_betta.png" alt="Cambodian" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== GRUDGE GAMEPLAY ======== -->
+<section class="banner b-grudge" id="grudge">
+  <div class="banner-inner">
+    <div class="banner-split" style="direction: rtl;">
+      <div class="banner-text reveal-right" style="direction: ltr;">
+        <h2 style="background: linear-gradient(135deg, var(--red), var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Grudge Gameplay</h2>
+        <p>Betta Warlords is built on the Grudge engine — a tactical combat system where every battle has consequences, every defeat creates a grudge, and rivals remember. Your Warlords carry their feuds across battles, growing stronger through vengeance.</p>
+        <p><strong style="color: var(--red);">Betta Warlords is the ONLY way to access the early stages of Grudge Studios systems.</strong> Playing this game is your gateway into the broader Grudge ecosystem before it opens to the public.</p>
+        <ul class="feat-list grudge-list">
+          <li>Persistent rival system — enemies grow stronger when they defeat you</li>
+          <li>Grudge mechanics fuel revenge bonuses and unique skill unlocks</li>
+          <li>4-row tactical positioning with Guardian passive intercepts</li>
+          <li>Multi-unit party combat with speed-based initiative</li>
+          <li>Exclusive early access to Grudge Studios game engine and tools</li>
+          <li>The first title in the Grudge Studios catalog — be a founding player</li>
+        </ul>
+        <a href="/" class="btn btn-primary" style="background: linear-gradient(135deg, var(--red), var(--orange));">Enter the Arena</a>
+      </div>
+      <div class="banner-visual reveal-left" style="direction: ltr;">
+        <img src="/images/enemies/swordfish_knight.png" alt="Swordfish Knight" loading="lazy" />
+        <img src="/images/enemies/lobster_warlord.png" alt="Lobster Warlord" loading="lazy" />
+        <img src="/images/enemies/abyss_king.png" alt="Abyss King" loading="lazy" />
+        <img src="/images/enemies/charybdis.png" alt="Charybdis" loading="lazy" />
+        <img src="/images/enemies/kraken_lich.png" alt="Kraken Lich" loading="lazy" />
+        <img src="/images/enemies/void_sentinel.png" alt="Void Sentinel" loading="lazy" />
+        <img src="/images/enemies/demon_lord.png" alt="Demon Lord" loading="lazy" />
+        <img src="/images/enemies/leviathan.png" alt="Leviathan" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== GBuX ECOSYSTEM ======== -->
+<section class="banner b-gbux" id="gbux">
+  <div class="banner-inner">
+    <div style="text-align: center; margin-bottom: 48px;" class="reveal">
+      <h2 style="background: linear-gradient(135deg, var(--gold), var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: clamp(2rem, 5vw, 3.5rem);">GBuX & Grudge Studios Free AI</h2>
+      <p style="color: var(--dim); max-width: 800px; margin: 20px auto 0; font-size: clamp(1rem, 1.8vw, 1.2rem);">Betta Warlords is your exclusive gateway to the GBuX reward ecosystem and Grudge Studios' Free AI platform. Play, earn, and unlock access to tools and games that aren't available anywhere else.</p>
+    </div>
+    <div class="eco-grid">
+      <div class="eco-card reveal" style="background-image: url('/map_nodes/coral_shallows.png');"><h4>Earn GBuX</h4><p>Earn GBuX tokens through battles, quests, cNFT breeding, and exploration. GBuX is the universal currency across all Grudge Studios titles and AI tools.</p></div>
+      <div class="eco-card reveal" style="background-image: url('/map_nodes/pearl_gate.png');"><h4>Free AI Access</h4><p>Grudge Studios provides free AI systems powered by advanced language models. AI-driven hero dialogue, battle narration, lore generation, and NPC personalities — all free.</p></div>
+      <div class="eco-card reveal" style="background-image: url('/map_nodes/maelstrom.png');"><h4>Game Catalog Access</h4><p>GBuX earned in Betta Warlords unlocks early access to upcoming Grudge Studios titles. Be the first to play new games before public release.</p></div>
+      <div class="eco-card reveal" style="background-image: url('/map_nodes/abyssal_throne.png');"><h4>Exclusive Early Access</h4><p>Betta Warlords players are the ONLY players who can access the early stages of GBuX. This is the founding game — your entry point to everything Grudge Studios builds.</p></div>
+      <div class="eco-card reveal" style="background-image: url('/map_nodes/jellyfish_drift.png');"><h4>cNFT Marketplace</h4><p>Trade bred Warlords, rare genetic mutations, and legendary morphs on the cNFT marketplace. Your in-game achievements become real digital assets.</p></div>
+      <div class="eco-card reveal" style="background-image: url('/map_nodes/frozen_depths.png');"><h4>Founding Player Status</h4><p>Early players receive permanent Founding Player status across all Grudge Studios platforms — bonus GBuX rates, exclusive cNFT drops, and priority access forever.</p></div>
+    </div>
+    <div style="text-align: center; margin-top: 48px;" class="reveal">
+      <a href="/" class="btn btn-gbux" style="font-size: 1.15rem; padding: 18px 48px;">Play Now — Start Earning GBuX</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== PWA / INSTALL ======== -->
+<section class="section" id="install">
+  <h2 class="stitle reveal">Play Anywhere</h2>
+  <p class="ssub reveal">Web2 browser game. Web3 on-chain cNFTs. Install as a native app on any device.</p>
+  <div class="pwa-banner reveal">
+    <div class="pwa-banner-icon" style="width: 64px; height: 64px; border-radius: 14px; overflow: hidden; flex-shrink: 0;"><img src="/images/logo.png" alt="" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+    <div style="flex: 1;">
+      <div class="pwa-banner-text">
+        <h3>Install Betta Warlords</h3>
+        <p>Add Betta Warlords to your home screen for a full-screen, app-like experience. Works offline, launches instantly, and receives automatic updates — no app store required.</p>
+      </div>
+      <div class="pwa-platforms">
+        <span class="pwa-plat">iOS Safari</span>
+        <span class="pwa-plat">Android Chrome</span>
+        <span class="pwa-plat">Windows</span>
+        <span class="pwa-plat">macOS</span>
+        <span class="pwa-plat">Linux</span>
+        <span class="pwa-plat">ChromeOS</span>
+      </div>
+    </div>
+    <button class="btn btn-install" id="installBtn2" style="display:none; flex-shrink:0;" onclick="installPWA()">Install Now</button>
+  </div>
+  <div style="text-align: center; margin-top: 32px;" class="reveal">
+    <p style="color: var(--dim); font-size: 0.95rem; margin-bottom: 24px;">Or just play in your browser — no download needed. Works on mobile, tablet, and desktop.</p>
+    <a href="/" class="btn btn-primary">Play in Browser</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== MYSTERY CLUES ======== -->
+<section class="section">
+  <h2 class="stitle reveal">The Silence of the Plankton</h2>
+  <p class="ssub reveal">Fragments of truth scattered through the deep... Can you piece them together?</p>
+  <div style="max-width: 800px; margin: 0 auto;" class="reveal">
+    <div style="background: rgba(14,22,48,0.6); border: 1px solid rgba(34,211,238,0.15); border-radius: 14px; padding: 28px;">
+      <div class="mystery-item" style="color: var(--cyan);">"The Root Crown's inscriptions speak of a 'Fourth Vessel' that was never meant to awaken."</div>
+      <div class="mystery-item" style="color: var(--purple);">"Charybdis's mad ravings mention 'the light that ate itself.'"</div>
+      <div class="mystery-item" style="color: var(--cyan);">"In the deepest part of the Hadal Trench, Plankton still glow — but they spell out a single word in an ancient script."</div>
+      <div class="mystery-item" style="color: var(--red);">"The Abyss King isn't conquering the waters — he's filling a vacuum the Plankton left behind."</div>
+      <div class="mystery-item" style="color: var(--teal);">"Each Root Crown fragment restored causes a brief, blinding flash of Plankton light — as if they're watching."</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FINAL CTA ======== -->
+<section class="section" style="text-align: center; padding-bottom: 48px;">
+  <h2 class="stitle reveal" style="margin-bottom: 20px;">The Waters Are Calling</h2>
+  <p class="ssub reveal" style="margin-bottom: 40px;">Gather your Warlords. Restore the Root Crown. Discover the Silence. Earn GBuX. Be a founding player of Grudge Studios.</p>
+  <div class="cta-row reveal">
+    <a href="/" class="btn btn-primary" style="font-size: 1.15rem; padding: 18px 48px;">Dive In — Play Betta Warlords</a>
+    <a href="#cnft" class="btn btn-secondary">cNFT Breeding</a>
+    <a href="#gbux" class="btn btn-gbux">Earn GBuX</a>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <img src="/images/logo.png" alt="Betta Warlords" class="footer-logo" />
+  <p style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--text); margin-bottom: 6px;">Grudge Studios</p>
+  <p>Betta Warlords — The Sunken Kingdom of Abyssia</p>
+  <p style="font-size: 0.8rem;">Powered by Free AI &bull; cNFT Breeding &bull; GBuX Ecosystem &bull; PWA</p>
+  <div class="footer-links">
+    <a href="/">Play Now</a>
+    <a href="#lore">Lore</a>
+    <a href="#breeds">Breeds</a>
+    <a href="#cnft">cNFT</a>
+    <a href="#grudge">Grudge</a>
+    <a href="#gbux">GBuX</a>
+    <a href="#install">Install</a>
+  </div>
+  <p style="margin-top: 28px; font-size: 0.75rem; color: rgba(148,163,184,0.5);">&copy; 2026 Grudge Studios. All rights reserved.</p>
+</footer>
+
+<script>
+(function() {
+  var bEl = document.getElementById('bubbles');
+  for (var i = 0; i < 35; i++) {
+    var b = document.createElement('div');
+    b.className = 'bubble';
+    var sz = 3 + Math.random() * 12;
+    b.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;left:' + (Math.random()*100) + '%;--wx:' + (15+Math.random()*40) + 'px;animation-duration:' + (7+Math.random()*16) + 's;animation-delay:' + (Math.random()*12) + 's;';
+    bEl.appendChild(b);
+  }
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) { obs.observe(el); });
+
+  var deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    document.querySelectorAll('#installBtn, #installBtn2').forEach(function(b) { b.style.display = 'inline-flex'; });
+  });
+
+  window.installPWA = function() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function() { deferredPrompt = null; });
+    }
+  };
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(function() {});
+  }
+})();
+</script>
+
+</body>
+</html>
