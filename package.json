@@ -6,6 +6,9 @@
   "author": "Grudge Studio Racalvin The Pirate King",
   "license": "UNLICENSED",
   "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 5000",
     "build": "vite build",

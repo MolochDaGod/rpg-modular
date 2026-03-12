@@ -733,75 +733,79 @@ const COMMAND_RESPONSES = {
   },
 };
 
-app.post('/api/discord/interactions', verifyKeyMiddleware(DISCORD_PUBLIC_KEY), async (req, res) => {
-  const { type, data, member } = req.body;
+if (DISCORD_PUBLIC_KEY) {
+  app.post('/api/discord/interactions', verifyKeyMiddleware(DISCORD_PUBLIC_KEY), async (req, res) => {
+    const { type, data, member } = req.body;
 
-  if (type === InteractionType.PING) {
-    return res.json({ type: InteractionResponseType.PONG });
-  }
+    if (type === InteractionType.PING) {
+      return res.json({ type: InteractionResponseType.PONG });
+    }
 
-  if (type === InteractionType.APPLICATION_COMMAND && data?.name === 'warlords') {
-    const action = data.options?.[0]?.value || 'play';
-    const embed = COMMAND_RESPONSES[action] || COMMAND_RESPONSES.play;
-    return res.json({
-      type: 4,
-      data: {
-        embeds: [{
-          ...embed,
-          footer: { text: 'Betta Warlords | Grudge Studios' },
-          timestamp: new Date().toISOString(),
-        }],
-      },
-    });
-  }
-
-  if (type === InteractionType.APPLICATION_COMMAND && data?.name === 'chat') {
-    const message = data.options?.find(o => o.name === 'message')?.value || '';
-    const topicKey = data.options?.find(o => o.name === 'topic')?.value || 'general';
-    const topic = TOPIC_LABELS[topicKey] || TOPIC_LABELS.general;
-    const username = member?.user?.global_name || member?.user?.username || 'Warlord';
-    const avatarHash = member?.user?.avatar;
-    const userId = member?.user?.id;
-    const avatarUrl = avatarHash && userId
-      ? `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.png`
-      : null;
-
-    try {
-      await sendChatWebhook({
-        embeds: [{
-          description: message,
-          color: topic.color,
-          author: {
-            name: `${topic.emoji} ${username}`,
-            icon_url: avatarUrl || undefined,
-          },
-          footer: { text: `${topic.label} | Betta Warlords Chat` },
-          timestamp: new Date().toISOString(),
-        }],
-        username: `${username} — Betta Warlords`,
-        avatar_url: avatarUrl || undefined,
-      });
+    if (type === InteractionType.APPLICATION_COMMAND && data?.name === 'warlords') {
+      const action = data.options?.[0]?.value || 'play';
+      const embed = COMMAND_RESPONSES[action] || COMMAND_RESPONSES.play;
       return res.json({
         type: 4,
         data: {
-          content: `${topic.emoji} Your message was posted to <#${CHAT_CHANNEL_ID}>!`,
-          flags: 64,
-        },
-      });
-    } catch (err) {
-      console.error('Chat command error:', err.message);
-      return res.json({
-        type: 4,
-        data: {
-          content: 'Failed to send message. Please try again later.',
-          flags: 64,
+          embeds: [{
+            ...embed,
+            footer: { text: 'Betta Warlords | Grudge Studios' },
+            timestamp: new Date().toISOString(),
+          }],
         },
       });
     }
-  }
 
-  res.json({ type: 4, data: { content: 'Unknown command' } });
-});
+    if (type === InteractionType.APPLICATION_COMMAND && data?.name === 'chat') {
+      const message = data.options?.find(o => o.name === 'message')?.value || '';
+      const topicKey = data.options?.find(o => o.name === 'topic')?.value || 'general';
+      const topic = TOPIC_LABELS[topicKey] || TOPIC_LABELS.general;
+      const username = member?.user?.global_name || member?.user?.username || 'Warlord';
+      const avatarHash = member?.user?.avatar;
+      const userId = member?.user?.id;
+      const avatarUrl = avatarHash && userId
+        ? `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.png`
+        : null;
+
+      try {
+        await sendChatWebhook({
+          embeds: [{
+            description: message,
+            color: topic.color,
+            author: {
+              name: `${topic.emoji} ${username}`,
+              icon_url: avatarUrl || undefined,
+            },
+            footer: { text: `${topic.label} | Betta Warlords Chat` },
+            timestamp: new Date().toISOString(),
+          }],
+          username: `${username} — Betta Warlords`,
+          avatar_url: avatarUrl || undefined,
+        });
+        return res.json({
+          type: 4,
+          data: {
+            content: `${topic.emoji} Your message was posted to <#${CHAT_CHANNEL_ID}>!`,
+            flags: 64,
+          },
+        });
+      } catch (err) {
+        console.error('Chat command error:', err.message);
+        return res.json({
+          type: 4,
+          data: {
+            content: 'Failed to send message. Please try again later.',
+            flags: 64,
+          },
+        });
+      }
+    }
+
+    res.json({ type: 4, data: { content: 'Unknown command' } });
+  });
+} else {
+  console.warn('DISCORD_PUBLIC_KEY not set — /api/discord/interactions route disabled');
+}
 
 app.post('/api/discord/bot/send', requireAdmin, async (req, res) => {
   const { content, embeds, channelId } = req.body;
