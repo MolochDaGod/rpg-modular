@@ -1,0 +1,16 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/api/auth/:path*", "destination": "https://api.grudge-studio.com/api/auth/:path*" },
+    { "source": "/api/:path*",      "destination": "https://api.grudge-studio.com/api/:path*" },
+    { "source": "/(.*)",            "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/rpg-maker-studio/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ]
+}
