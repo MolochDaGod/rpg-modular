@@ -14,7 +14,7 @@ export default defineConfig({
       },
     },
   },
-  base: '/rpg-maker-studio/',
+  base: '/',
   appType: 'spa',
   build: {
     outDir: 'dist',
